@@ -1,0 +1,25 @@
+{
+  "name": "mern-fullsteck",
+  "version": "1.0.0",
+  "description": "Mern steck",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "keywords": [
+    "mern",
+    "react",
+    "node"
+  ],
+  "author": "Vladimir Voloshchik <lovkiy2012@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.5"
+  }
+}
