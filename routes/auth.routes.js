@@ -69,7 +69,7 @@ router.post(
         return res.status(400).json({ message: 'Пользователь не найден' });
       }
 
-      const isMatch = await bcrypt.compare(password.user.password);
+      const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
         return res.status(400).json({ massage: 'Не верный пороль' });
@@ -84,19 +84,8 @@ router.post(
       );
 
       res.json({ token, userId: user.id });
-      // const candidate = await User.findOne({ email });
-
-      // if (candidate) {
-      //   return res.status(400).json({ message: 'Такой пользователь уже есть' });
-      // }
-
-      // const hashedPassword = await bcrypt.hash(password, 10);
-
-      // const user = new User({ email, password: hashedPassword });
-      // await user.save();
-      // res.status(201).json({ message: 'Пользователь создан.' });
     } catch (error) {
-      res.status(500).json({ message: 'Что пошло не так, попробуйте снова.' });
+      res.status(500).json({ message: 'Что пошло не так!!, попробуйте снова.' });
     }
   }
 );
