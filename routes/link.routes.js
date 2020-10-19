@@ -8,9 +8,9 @@ const router = Router();
 
 router.post('/generate', auth, async (req, res) => {
   try {
-    const baseUrl = config.get('baseUlr');
+    const baseUrl = config.get('baseUrl');
     const { from } = req.body;
-
+    console.log('from', from);
     const code = shortid.generate();
     const existing = await Link.findOne({ from });
 
@@ -18,7 +18,7 @@ router.post('/generate', auth, async (req, res) => {
       return res.json({ link: existing });
     }
     const to = baseUrl + '/t/' + code;
-    const link = new Link({ from, to, code, owner: req.user.userId });
+    const link = new Link({ code, from, to, owner: req.user.userId });
     await link.save();
     res.status(201).json({ link });
   } catch (error) {
