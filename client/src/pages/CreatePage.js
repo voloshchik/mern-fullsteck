@@ -20,7 +20,6 @@ export const CreatePage = () => {
           { Authorization: `Bear ${auth.token}` }
         );
         history.push(`/detail/${data.link._id}`);
-        console.log('data', data);
       } catch (error) {}
     }
   };
