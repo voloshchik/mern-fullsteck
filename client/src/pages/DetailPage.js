@@ -10,7 +10,7 @@ export const DetailPage = () => {
   const [link, setLink] = useState(null);
   const { token } = useContext(AuthContext);
   const { request, loading } = useHttp();
-  console.log('linkId', linkId);
+
   const getLink = useCallback(async () => {
     try {
       const fetched = await request(`/api/link/${linkId}`, 'GET', null, {
@@ -19,11 +19,11 @@ export const DetailPage = () => {
       setLink(fetched);
     } catch (error) {}
   }, [token, linkId, request]);
-  console.log('link', link);
+
   useEffect(() => {
     getLink();
   }, [getLink]);
-  console.log('loading', loading);
+
   if (loading) {
     return <Loader />;
   }

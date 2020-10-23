@@ -10,7 +10,7 @@ router.post('/generate', auth, async (req, res) => {
   try {
     const baseUrl = config.get('baseUrl');
     const { from } = req.body;
-    console.log('from', from);
+
     const code = shortid.generate();
     const existing = await Link.findOne({ from });
 
